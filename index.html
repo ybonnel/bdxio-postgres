@@ -82,48 +82,48 @@
 				</section>
 				<section class="live-demo">
 					<h4>C'est quoi cette table tweet_bdxio</h4>
-					<script type="text/javascript" data-src="https://asciinema.org/a/439skmzowkqn1d1g8l57l9d6m.js" id="asciicast-439skmzowkqn1d1g8l57l9d6m" async></script>
+					<asciinema asciinema="439skmzowkqn1d1g8l57l9d6m"></asciinema>
 					<iframe data-src="http://localhost:57575/"></iframe>
 				</section>
 				<section class="live-demo">
 					<h4>Combien de tweet bdxio par jour?</h4>
-					<script type="text/javascript" data-src="https://asciinema.org/a/eslv6b132ov3olk3kj5ebo3wp.js" id="asciicast-eslv6b132ov3olk3kj5ebo3wp" async></script>
+					<asciinema asciinema="eslv6b132ov3olk3kj5ebo3wp"></asciinema>
 					<iframe data-src="http://localhost:57575/"></iframe>
 				</section>
 				<section class="live-demo">
 					<h4>Combien de tweet bdxio par jour de la semaine?</h4>
 					<iframe data-src="http://localhost:57575/"></iframe>
-					<script type="text/javascript" data-src="https://asciinema.org/a/6yhuz40k4chkjeccnr9t79gd1.js" id="asciicast-6yhuz40k4chkjeccnr9t79gd1" async></script>
+					<asciinema asciinema="6yhuz40k4chkjeccnr9t79gd1"></asciinema>
 				</section>
 				<section class="live-demo">
 					<h4>Qui tweet le plus sur bdxio?</h4>
 					<iframe data-src="http://localhost:57575/"></iframe>
-					<script type="text/javascript" data-src="https://asciinema.org/a/4y64uiespou888m8ccq0mfo1m.js" id="asciicast-4y64uiespou888m8ccq0mfo1m" async></script>
+					<asciinema asciinema="4y64uiespou888m8ccq0mfo1m"></asciinema>
 				</section>
 				<section class="live-demo">
 					<h4>Qui a le plus de followers?</h4>
 					<iframe data-src="http://localhost:57575/"></iframe>
-					<script type="text/javascript" data-src="https://asciinema.org/a/bmd787xqfsmkc9wlcejmi889h.js" id="asciicast-bmd787xqfsmkc9wlcejmi889h" async></script>
+					<asciinema asciinema="bmd787xqfsmkc9wlcejmi889h"></asciinema>
 				</section>
 				<section class="live-demo">
 					<h4>Le tweet le plus retweeté?</h4>
 					<iframe data-src="http://localhost:57575/"></iframe>
-					<script type="text/javascript" data-src="https://asciinema.org/a/4kusl2bdt9osf36zwofjk4nc9.js" id="asciicast-4kusl2bdt9osf36zwofjk4nc9" async></script>
+					<asciinema asciinema="4kusl2bdt9osf36zwofjk4nc9"></asciinema>
 				</section>
 				<section class="live-demo">
 					<h4>Les tweets loins du lieu (44.802614, -0.588054)</h4>
 					<iframe data-src="http://localhost:57575/"></iframe>
-					<script type="text/javascript" data-src="https://asciinema.org/a/3i87bua0s0zxuwtdl4r4hbpgq.js" id="asciicast-3i87bua0s0zxuwtdl4r4hbpgq" async></script>
+					<asciinema asciinema="3i87bua0s0zxuwtdl4r4hbpgq"></asciinema>
 				</section>
 				<section class="live-demo">
 					<h4>Cas concret : une table utilisateur</h4>
 					<iframe data-src="http://localhost:57575/"></iframe>
-					<script type="text/javascript" data-src="https://asciinema.org/a/42k5ykfnkaakxntq3w5himpn3.js" id="asciicast-42k5ykfnkaakxntq3w5himpn3" async></script>
+					<asciinema asciinema="42k5ykfnkaakxntq3w5himpn3"></asciinema>
 				</section>
 				<section class="live-demo">
 					<h4>Ok avec 3 lignes, mais avec des millions?</h4>
 					<iframe data-src="http://localhost:57575/"></iframe>
-					<script type="text/javascript" data-src="https://asciinema.org/a/2pqn0vosioisqjtj6yqpistz8.js" id="asciicast-2pqn0vosioisqjtj6yqpistz8" async></script>
+					<asciinema asciinema="2pqn0vosioisqjtj6yqpistz8"></asciinema>
 				</section>
 				<section>
 					<h2>Questions</h2>
@@ -162,10 +162,21 @@
 			if (!window.location.search.match( /livedemo/gi )) {
 				document.querySelectorAll("section.live-demo>iframe")
 						.forEach(node => node.parentNode.removeChild(node));
-
-				document.querySelectorAll("section.live-demo>script")
-						.forEach(node => node.src = node.getAttribute('data-src'));
+				Reveal.addEventListener( 'slidechanged', function( event ) {
+					const nodeScript = event.currentSlide.querySelector('asciinema');
+					console.log(nodeScript);
+					if (nodeScript && nodeScript.getAttribute('asciinema')) {
+						const idAsciinema = nodeScript.getAttribute('asciinema');
+						event.currentSlide.removeChild(nodeScript);
+						const asccinemaScript = document.createElement('script');
+						asccinemaScript.type = 'text/javascript';
+						asccinemaScript.id = 'asciicast-' + idAsciinema;
+						asccinemaScript.src = 'https://asciinema.org/a/' + idAsciinema + '.js';
+						event.currentSlide.appendChild(asccinemaScript);
+					}
+				} );
 			}
+
 
 		</script>
 	</body>
