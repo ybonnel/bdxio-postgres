@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Postgresql : la nouvelle base orientée document</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style>
+			section.live-demo {
+				height: 90%;
+				margin-left: -25px;
+				width: 150%;
+			}
+
+			section.live-demo iframe {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+
+		<!-- Printing and PDF exports -->
+		<script>
+
+
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Postgresql : la nouvelle base orientée document</h3>
+					<p>Yan Bonnel @ybonnel</p>
+				</section>
+				<section>
+					<h2>SELECT me FROM speaker;</h2>
+					<ul>
+					<li>Développeur full-stack chez Cegedim</li>
+					<li>Développeur de Transports Bordeaux et Transports Rennes</li>
+					<li>Twitter : @ybonnel</li>
+					<li>github.com/ybonnel</li>
+						</ul>
+				</section>
+				<section>
+					<h2>SELECT me FROM speaker;</h2>
+					<img src="images/elephant.gif"/>
+					<p>Postgresql</p>
+				</section>
+				<section>
+					<h2>SELECT me FROM speaker;</h2>
+					<img src="images/java.gif"/>
+					<p>Java</p>
+				</section>
+				<section>
+					<h2>SELECT me FROM speaker;</h2>
+					<img src="images/javascripts.gif"/>
+					<p>Javascripts</p>
+				</section>
+				<section>
+					<h2>Du json dans Postgresql</h2>
+					<ul>
+						<li>9.3 : Nouveau type JSON (pas indexable)</li>
+						<li>9.4 : Nouveau type JSONB (indexable)</li>
+						<li>On peux donc mettre du JSON dans notre BDD</li>
+						<img src="images/danse-de-la-victoire.gif" class="fragment"/>
+					</ul>
+				</section>
+				<section>
+					<h2>Démo</h2>
+					<img src="images/serious.gif"/>
+				</section>
+				<section class="live-demo">
+					<h4>C'est quoi cette table tweet_bdxio</h4>
+					<script type="text/javascript" data-src="https://asciinema.org/a/439skmzowkqn1d1g8l57l9d6m.js" id="asciicast-439skmzowkqn1d1g8l57l9d6m" async></script>
+					<iframe data-src="http://localhost:57575/"></iframe>
+				</section>
+				<section class="live-demo">
+					<h4>Combien de tweet bdxio par jour?</h4>
+					<script type="text/javascript" data-src="https://asciinema.org/a/eslv6b132ov3olk3kj5ebo3wp.js" id="asciicast-eslv6b132ov3olk3kj5ebo3wp" async></script>
+					<iframe data-src="http://localhost:57575/"></iframe>
+				</section>
+				<section class="live-demo">
+					<h4>Combien de tweet bdxio par jour de la semaine?</h4>
+					<iframe data-src="http://localhost:57575/"></iframe>
+					<script type="text/javascript" data-src="https://asciinema.org/a/6yhuz40k4chkjeccnr9t79gd1.js" id="asciicast-6yhuz40k4chkjeccnr9t79gd1" async></script>
+				</section>
+				<section class="live-demo">
+					<h4>Qui tweet le plus sur bdxio?</h4>
+					<iframe data-src="http://localhost:57575/"></iframe>
+					<script type="text/javascript" data-src="https://asciinema.org/a/4y64uiespou888m8ccq0mfo1m.js" id="asciicast-4y64uiespou888m8ccq0mfo1m" async></script>
+				</section>
+				<section class="live-demo">
+					<h4>Qui a le plus de followers?</h4>
+					<iframe data-src="http://localhost:57575/"></iframe>
+					<script type="text/javascript" data-src="https://asciinema.org/a/bmd787xqfsmkc9wlcejmi889h.js" id="asciicast-bmd787xqfsmkc9wlcejmi889h" async></script>
+				</section>
+				<section class="live-demo">
+					<h4>Le tweet le plus retweeté?</h4>
+					<iframe data-src="http://localhost:57575/"></iframe>
+					<script type="text/javascript" data-src="https://asciinema.org/a/4kusl2bdt9osf36zwofjk4nc9.js" id="asciicast-4kusl2bdt9osf36zwofjk4nc9" async></script>
+				</section>
+				<section class="live-demo">
+					<h4>Les tweets loins du lieu (44.802614, -0.588054)</h4>
+					<iframe data-src="http://localhost:57575/"></iframe>
+					<script type="text/javascript" data-src="https://asciinema.org/a/3i87bua0s0zxuwtdl4r4hbpgq.js" id="asciicast-3i87bua0s0zxuwtdl4r4hbpgq" async></script>
+				</section>
+				<section class="live-demo">
+					<h4>Cas concret : une table utilisateur</h4>
+					<iframe data-src="http://localhost:57575/"></iframe>
+					<script type="text/javascript" data-src="https://asciinema.org/a/42k5ykfnkaakxntq3w5himpn3.js" id="asciicast-42k5ykfnkaakxntq3w5himpn3" async></script>
+				</section>
+				<section class="live-demo">
+					<h4>Ok avec 3 lignes, mais avec des millions?</h4>
+					<iframe data-src="http://localhost:57575/"></iframe>
+					<script type="text/javascript" data-src="https://asciinema.org/a/2pqn0vosioisqjtj6yqpistz8.js" id="asciicast-2pqn0vosioisqjtj6yqpistz8" async></script>
+				</section>
+				<section>
+					<h2>Questions</h2>
+					<div style="display: flex; align-items: center">
+
+						<div style="font-size: 90%">
+							<p>Code de la présentation : github.com/ybonnel/bdxio-postgres</p>
+							<p>Slides : ybonnel.github.io/bdxio-postgres/</p>
+						</div>
+						<img style="width: 40%" src="images/questions.gif">
+					</div>
+				</section>
+				<section>
+					<h1>Merci!</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+			if (!window.location.search.match( /livedemo/gi )) {
+				document.querySelectorAll("section.live-demo>iframe")
+						.forEach(node => node.parentNode.removeChild(node));
+
+				document.querySelectorAll("section.live-demo>script")
+						.forEach(node => node.src = node.getAttribute('data-src'));
+			}
+
+		</script>
+	</body>
+</html>
