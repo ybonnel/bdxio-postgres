@@ -175,7 +175,7 @@ ORDER BY tweet ->> 'createdAt' asc LIMIT 10;
 -- Le tweet le plus retweeté
 SELECT
   handle,
-  tweet,
+  tweet ->> 'text',
   ((tweet ->> 'retweetCount') :: INTEGER) rtCount
 FROM tweets_bdxio_big
 ORDER BY rtCount DESC
